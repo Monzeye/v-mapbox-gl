@@ -1,0 +1,120 @@
+{
+  "name": "v-mapbox-gl",
+  "description": "一个基于Vue+Typescript封装的Mapbox地图组件",
+  "version": "0.5.0",
+  "author": {
+    "name": "Monzeye",
+    "email": "monzeye@163.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Monzeye/v-mapbox-gl"
+  },
+  "homepage": "https://github.com/Monzeye/v-mapbox-gl-doc",
+  "type": "module",
+  "keywords": [
+    "mapbox",
+    "vue",
+    "vue3",
+    "typescript",
+    "mapbox-gl",
+    "vue-mapbox"
+  ],
+  "files": [
+    "dist/index.d.ts",
+    "dist/index.js",
+    "dist/index.umd.cjs",
+    "dist/style.css",
+    "dist/src",
+    "global.d.ts",
+    "typings/mabbox.d.ts",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "module": "./dist/index.js",
+  "main": "./dist/index.umd.cjs",
+  "types": "./dist/lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./*": "./*"
+  },
+  "scripts": {
+    "dev": "npm run build && cd examples && vite",
+    "build": "vue-tsc --noEmit && vite build && vue-tsc --declaration --emitDeclarationOnly && tsc-alias",
+    "preview": "vite preview",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint:eslint": "eslint --cache --max-warnings 0  \"packages/**/*.{vue,ts,tsx}\" --fix",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@types/geojson": "^7946.0.10",
+    "@types/mapbox-gl": "^2.7.10",
+    "mapbox-gl": "^2.13.0",
+    "nanoid": "^4.0.1",
+    "stats.js": "^0.17.0",
+    "vue-demi": "^0.14.6"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.5.0",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@types/node": "^18.15.3",
+    "@types/stats.js": "^0.17.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "@vue/test-utils": "^2.3.2",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.10.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.7",
+    "sass": "^1.60.0",
+    "sass-loader": "^13.2.1",
+    "tsc-alias": "^1.8.5",
+    "typescript": "^5.0.3",
+    "vite": "^4.1.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vitest": "^0.29.7",
+    "vue": "^3.2.47",
+    "vue-router": "^4.2.5",
+    "vue-tsc": "^1.0.24"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+      "prettier --write--parser json"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{scss,less,styl,html}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  }
+}
